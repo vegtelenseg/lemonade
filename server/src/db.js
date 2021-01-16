@@ -7,3 +7,5 @@ const pool = new pg.Pool({
 })
 
 exports.query = (...args) => pool.query(...args)
+
+exports.close = () => pool.end()

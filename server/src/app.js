@@ -1,4 +1,5 @@
 const cors = require('cors')
+const db = require('./db')
 const express = require('express')
 const learnerHandlers = require('./handlers/learners')
 
@@ -8,7 +9,7 @@ app.use(cors())
 
 app.get('/learners', wrapAsyncHandler(learnerHandlers.listLearners))
 
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log('Server started')
 })
 
@@ -19,3 +20,13 @@ app.listen(8080, () => {
 function wrapAsyncHandler(handler) {
   return (...args) => handler(...args).catch(args[2])
 }
+
+function shutDownGracefully() {
+  console.log('Shutting down gracefully...')
+  server.close(() => {
+    db.close()
+  })
+}
+
+process.on('SIGINT', shutDownGracefully)
+process.on('SIGTERM', shutDownGracefully)

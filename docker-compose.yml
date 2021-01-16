@@ -12,5 +12,15 @@ services:
     ports:
       - "5432:5432"
 
+  server:
+    build:
+      context: ./server
+    depends_on:
+      - postgres
+    environment:
+      PGHOST: postgres
+    ports:
+      - "8080:8080"
+
 volumes:
   dbdata:
