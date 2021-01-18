@@ -47,64 +47,64 @@ Given a Learner, George
 Given Fred is mentoring George  
 Given George has completed the program  
 When Fred views George's progress page  
-Then Fred can see that each module and lesson is complete
+Then Fred can see that each module and lesson is complete  
 
 In order to manage my Learners, as a Mentor, I would like to delete a Learner, and their associated progress.
 
 Scenario: Mentor Deletes a Learner
 
-Given a logged on Mentor, Fred
-Given a Learner, George
-Given Fred is mentoring George
-When Fred deletes George
-Then George's progress is deleted
-Then George is deleted
-Then Fred is notified that George was successfully deleted
+Given a logged on Mentor, Fred  
+Given a Learner, George  
+Given Fred is mentoring George  
+When Fred deletes George  
+Then George's progress is deleted  
+Then George is deleted  
+Then Fred is notified that George was successfully deleted  
 
-In order for my Mentor to support and monitor me, as Learner, I need to update my progress.
+In order for my Mentor to support and monitor me, as Learner, I need to update my progress.  
 P.S. Although there is no associated user interface for this scenario we would you to complete the end point to support it.
 
 Scenario: Learners successfully progresses a Lesson for the first time
 
-Given a Learner George
-Given a Module 1
-Given a Lesson 2
-Given George has made no previous progress on Lesson 1.2
-When George completes 50% of Lesson 1.2
-Then George's progress of 50% is stored
-Then the date on which George started Lesson 1.2 is stored
-Then George is notified that his progress was successfully updated
+Given a Learner George  
+Given a Module 1  
+Given a Lesson 2  
+Given George has made no previous progress on Lesson 1.2  
+When George completes 50% of Lesson 1.2  
+Then George's progress of 50% is stored  
+Then the date on which George started Lesson 1.2 is stored  
+Then George is notified that his progress was successfully updated  
 
 Scenario: Learner successfully progresses a Lesson again
 
-Given a Learner George
-Given a Module 1
-Given a Lesson 2
-Given George has 25% progress on Lesson 1.2
-When George completes 50% of Lesson 1.2
-Then George's progress for Lesson 1.2 of 50% is stored
-Then George is notified that his progress was successfully updated
+Given a Learner George  
+Given a Module 1  
+Given a Lesson 2  
+Given George has 25% progress on Lesson 1.2  
+When George completes 50% of Lesson 1.2  
+Then George's progress for Lesson 1.2 of 50% is stored  
+Then George is notified that his progress was successfully updated  
 
 Scenario: Learner successfully completes Lesson
 
-Given a Learner George
-Given a Module 1
-Given a Lesson 2
-Given George has 50% progress on Lesson 1.2
-When George completes 100% of Lesson 1.2
-Then George's progress for Lesson 1.2 of 100% is stored
-Then the date on which George completed Lesson 1.2 is stored
-Then George is notified that his progress was successfully updated
+Given a Learner George  
+Given a Module 1  
+Given a Lesson 2  
+Given George has 50% progress on Lesson 1.2  
+When George completes 100% of Lesson 1.2  
+Then George's progress for Lesson 1.2 of 100% is stored  
+Then the date on which George completed Lesson 1.2 is stored  
+Then George is notified that his progress was successfully updated    
 
 Scenario: Learner attempts to reduce progress
 
-Given a Learner George
-Given a Module 1
-Given a Lesson 2
-Given George has 50% progress on Lesson 1.2
-When George completes 25% of Lesson 1.2
-Then George's progress for Lesson 1.2 of 50% is stored
-Then George is notified that his progress was not updated
+Given a Learner George  
+Given a Module 1  
+Given a Lesson 2  
+Given George has 50% progress on Lesson 1.2  
+When George completes 25% of Lesson 1.2  
+Then George's progress for Lesson 1.2 of 50% is stored  
+Then George is notified that his progress was not updated  
 
 # Standard of code
 
