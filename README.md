@@ -16,7 +16,10 @@ manage, monitor and support their young entrepreneurs through their learning jou
 
 # What you need to do
 
-Complete and integrate the API specified below into the associated views in order for the acceptance scenarios below to pass.
+Complete and integrate the API specified below into the associated views in order for the acceptance scenarios below to pass.  
+You are welcome to use any libraries or tools which would assist to complete the challenge.  
+You should complete this challenge on your own, but we like a collaborative development process, 
+so you are welcome to ask any questions throughout, and we will be happy to discuss them with you.  
 
 # Acceptance Scenarios
 
