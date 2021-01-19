@@ -1,4 +1,7 @@
+import Heading from './Heading'
 import LearnerList from './LearnerList'
+import MuiBox from '@material-ui/core/Box'
+import MuiContainer from '@material-ui/core/Container'
 
 function LearnerListPage() {
   const placeholderLearners = [
@@ -22,10 +25,14 @@ function LearnerListPage() {
     },
   ]
   return (
-    <>
-      <h1>Learners</h1>
-      <LearnerList learners={placeholderLearners} />
-    </>
+    <MuiContainer component="main" mt={4}>
+      <MuiBox display="flex" justifyContent="center" mt={4}>
+        <Heading>Learner Dashboard</Heading>
+      </MuiBox>
+      <MuiBox mt={4}>
+        <LearnerList learners={placeholderLearners} />
+      </MuiBox>
+    </MuiContainer>
   )
 }
 
