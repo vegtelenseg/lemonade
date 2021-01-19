@@ -1,5 +1,5 @@
 import Heading from './Heading'
-import LearnerList from './LearnerList'
+import LearnersTable from './LearnersTable'
 import MuiBox from '@material-ui/core/Box'
 import MuiContainer from '@material-ui/core/Container'
 
@@ -30,7 +30,7 @@ function LearnerListPage() {
         <Heading>Learner Dashboard</Heading>
       </MuiBox>
       <MuiBox mt={4}>
-        <LearnerList learners={placeholderLearners} />
+        <LearnersTable learners={placeholderLearners} />
       </MuiBox>
     </MuiContainer>
   )

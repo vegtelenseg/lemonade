@@ -8,7 +8,7 @@ import MuiTableHead from '@material-ui/core/TableHead'
 import MuiTableRow from '@material-ui/core/TableRow'
 import {Link} from 'react-router-dom'
 
-function LearnerList({learners}) {
+function LearnersTable({learners}) {
   return (
     <MuiTableContainer component={MuiPaper}>
       <MuiTable>
@@ -43,4 +43,4 @@ function LearnerList({learners}) {
   )
 }
 
-export default LearnerList
+export default LearnersTable
