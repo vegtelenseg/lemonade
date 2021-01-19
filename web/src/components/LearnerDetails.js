@@ -1,14 +1,25 @@
+import Heading from './Heading'
+import DeleteIcon from '@material-ui/icons/Delete'
+import MuiBox from '@material-ui/core/Box'
+import MuiButton from '@material-ui/core/Button'
+
 function LearnerDetails({learner}) {
   return (
-    <>
-      <div>
-        <h1>{learner.name}</h1>
+    <MuiBox
+      display="flex"
+      flexWrap="wrap"
+      justifyContent="space-between"
+      alignItems="center"
+      p={2}
+    >
+      <MuiBox p={2}>
+        <Heading>{learner.name}</Heading>
         <div>{learner.username}</div>
-      </div>
-      <div>
+      </MuiBox>
+      <MuiBox p={2}>
         <LearnerActions learnerId={learner.id} />
-      </div>
-    </>
+      </MuiBox>
+    </MuiBox>
   )
 }
 
@@ -18,11 +29,16 @@ function LearnerActions({learnerId}) {
   }
 
   return (
-    <ul>
-      <li>
-        <button onClick={handleDelete}>Delete</button>
-      </li>
-    </ul>
+    <MuiBox display="flex" flexDirection="column">
+      <MuiButton
+        variant="contained"
+        color="secondary"
+        startIcon={<DeleteIcon />}
+        onClick={handleDelete}
+      >
+        Delete
+      </MuiButton>
+    </MuiBox>
   )
 }
 

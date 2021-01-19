@@ -1,3 +1,17 @@
+import MuiBox from '@material-ui/core/Box'
+import MuiLinearProgress from '@material-ui/core/LinearProgress'
+import {makeStyles, withStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  lessons: {
+    listStyle: 'none',
+    padding: 0,
+  },
+  lesson: {
+    marginTop: theme.spacing(3),
+  },
+}))
+
 function LearnerProgress({progress}) {
   const modules = [
     {
@@ -68,20 +82,20 @@ function LearnerProgress({progress}) {
     },
   ]
   return (
-    <>
-      <h2>Progress</h2>
+    <MuiBox display="flex" flexWrap="wrap" justifyContent="space-around" p={4}>
       {modules.map((module) => (
-        <ModuleProgress key={module.id} module={module} progress={[]} />
+        <ModuleProgress key={module.id} module={module} progress={progress} />
       ))}
-    </>
+    </MuiBox>
   )
 }
 
 function ModuleProgress({module, progress}) {
+  const styles = useStyles()
   return (
-    <>
+    <MuiBox>
       <h3>{module.name}</h3>
-      <ul>
+      <ul className={styles.lessons}>
         {module.lessons.map((lesson) => (
           <LessonProgress
             key={lesson.id}
@@ -90,15 +104,31 @@ function ModuleProgress({module, progress}) {
           />
         ))}
       </ul>
-    </>
+    </MuiBox>
   )
 }
 
+const Progress = withStyles((theme) => ({
+  root: {
+    height: 12,
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+  },
+  colorPrimary: {
+    backgroundColor: theme.palette.grey[200],
+  },
+  bar: {
+    borderRadius: 6,
+    backgroundColor: theme.palette.success.main,
+  },
+}))(MuiLinearProgress)
+
 function LessonProgress({lesson, progress}) {
+  const styles = useStyles()
   return (
-    <li>
+    <li className={styles.lesson}>
       <div>{lesson.name}</div>
-      <progress value={progress} />
+      <Progress variant="determinate" value={progress * 100} />
     </li>
   )
 }
