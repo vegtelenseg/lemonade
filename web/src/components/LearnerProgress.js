@@ -96,13 +96,18 @@ function ModuleProgress({module, progress}) {
     <MuiBox>
       <h3>{module.name}</h3>
       <ul className={styles.lessons}>
-        {module.lessons.map((lesson) => (
-          <LessonProgress
-            key={lesson.id}
-            lesson={lesson}
-            progress={Math.random()}
-          />
-        ))}
+        {module.lessons.map((lesson) => {
+          const lessonProgress = progress.find(
+            (p) => p.moduleId === module.id && p.lessonId === lesson.id
+          )
+          return (
+            <LessonProgress
+              key={lesson.id}
+              lesson={lesson}
+              progress={lessonProgress == null ? 0 : lessonProgress.progress}
+            />
+          )
+        })}
       </ul>
     </MuiBox>
   )
