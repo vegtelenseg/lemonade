@@ -4,6 +4,7 @@ import { LearnersRouteController } from "../routes/learner/LearnersRouteControll
 import { AbstractRouteController } from "../routes/AbstractRouteController";
 import { LearnerProgressRouteController } from "../routes/learner/LearnerProgressRouteController";
 import { LearnerDeleteRouteController } from "../routes/learner/LearnerDeleteRouteController";
+import { LearnerProgressUpdateRouteController } from "../routes/learner/LearnerProgressUpdateRouteController";
 export class InitializeRoutes {
   public static Initialize(app: Express, link: string) {
     const routes = this.getRoutes(link);
@@ -17,6 +18,7 @@ export class InitializeRoutes {
       new LearnersRouteController(link),
       new LearnerProgressRouteController(link),
       new LearnerDeleteRouteController(link),
+      new LearnerProgressUpdateRouteController(link),
     ];
 
     return routes;

@@ -5,10 +5,10 @@ import { LearnerService } from "../../services/leaner/LearnerService";
 import { StatusConstants } from "../../constants/StatusConstants";
 
 export class LearnersRouteController extends AbstractRouteController {
-  constructor(link: string) {
+  constructor(_link: string) {
     super();
     this.path = "/learners";
-    this.InitializeController(link);
+    this.InitializeGet();
   }
 
   public async runService(req: Request, res: Response): Promise<any> {

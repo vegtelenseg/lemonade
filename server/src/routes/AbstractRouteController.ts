@@ -4,13 +4,6 @@ export abstract class AbstractRouteController {
   router = express.Router();
   path!: string;
 
-  public async InitializeController(link: string) {
-    console.log(link + this.path);
-    await this.InitializeGet();
-    await this.InitializePost();
-    await this.InitializeDelete();
-  }
-
   public async runService(
     req: express.Request,
     resp: express.Response
@@ -24,6 +17,10 @@ export abstract class AbstractRouteController {
 
   public async InitializePost() {
     this.router.post(this.path, this.runService.bind(this)).bind(this);
+  }
+
+  public async InitializePut() {
+    this.router.put(this.path, this.runService.bind(this)).bind(this);
   }
 
   public async InitializeDelete() {

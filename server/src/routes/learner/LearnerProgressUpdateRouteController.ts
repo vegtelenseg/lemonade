@@ -4,22 +4,21 @@ import { AbstractRouteController } from "../AbstractRouteController";
 import { LearnerService } from "../../services/leaner/LearnerService";
 import { StatusConstants } from "../../constants/StatusConstants";
 
-export class LearnerProgressRouteController extends AbstractRouteController {
+export class LearnerProgressUpdateRouteController extends AbstractRouteController {
   constructor(_link: string) {
     super();
     this.path = `/learners/:learnerId/progress`;
-    this.InitializeGet();
+    this.InitializePut();
   }
 
   public async runService(req: Request, res: Response): Promise<any> {
     try {
-      // TODO: Get this from request headers or
-      // or somewhere else safer.
       const { learnerId } = req.params;
-      const response = await LearnerService.getLearnerProgress(
+      const { progress, lessonId } = req.body;
+      const response = await LearnerService.updateLearnerProgress(
         learnerId,
-        // @ts-ignore
-        res
+        progress,
+        lessonId
       );
       res.status(StatusConstants.code200).send(response);
     } catch (error) {

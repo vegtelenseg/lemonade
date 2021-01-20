@@ -17,5 +17,6 @@ export class InitializeMiddleWare {
     const errorMiddleware = new ErrorHandlingMiddleware(app);
 
     errorMiddleware.handle404Error();
+    errorMiddleware.handle500Error();
   }
 }
