@@ -8,6 +8,7 @@ export abstract class AbstractRouteController {
     console.log(link + this.path);
     await this.InitializeGet();
     await this.InitializePost();
+    await this.InitializeDelete();
   }
 
   public async runService(
@@ -23,5 +24,9 @@ export abstract class AbstractRouteController {
 
   public async InitializePost() {
     this.router.post(this.path, this.runService.bind(this)).bind(this);
+  }
+
+  public async InitializeDelete() {
+    this.router.delete(this.path, this.runService.bind(this)).bind(this);
   }
 }

@@ -20,5 +20,5 @@ export const server = async () => {
     console.log(`Server listening at ${host} on ${port} port.`);
   });
 
-  return Promise.resolve(app);
+  return app;
 };

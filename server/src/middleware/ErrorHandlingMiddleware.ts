@@ -9,7 +9,7 @@ export class ErrorHandlingMiddleware {
     this.app = _app;
   }
 
-  public async handle404Error() {
+  public handle404Error() {
     this.app.use((_req: Request, resp: Response) => {
       resp.status(StatusConstants.code404).send(StatusConstants.code404Message);
     });

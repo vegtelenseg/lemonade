@@ -11,11 +11,11 @@ export class CommonMiddleware {
     this.app = _app;
   }
 
-  public async useBodyParser() {
+  public useBodyParser() {
     this.app.use(bodyParser.json());
   }
 
-  public async useURLencoded() {
+  public useURLencoded() {
     this.app.use(
       bodyParser.urlencoded({
         extended: true,
@@ -23,11 +23,11 @@ export class CommonMiddleware {
     );
   }
 
-  public async useCors() {
+  public useCors() {
     this.app.use(cors());
   }
 
-  public async logRequests() {
+  public logRequests() {
     const logger = Logger.getLogger();
     this.app.use((req, res, done) => {
       logger.info(req.originalUrl);
