@@ -1,6 +1,6 @@
-import MuiBox from '@material-ui/core/Box'
-import MuiLinearProgress from '@material-ui/core/LinearProgress'
-import {makeStyles, withStyles} from '@material-ui/core/styles'
+import MuiBox from '@material-ui/core/Box';
+import MuiLinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   lessons: {
@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
   lesson: {
     marginTop: theme.spacing(3),
   },
-}))
+}));
 
-function LearnerProgress({progress}) {
+function LearnerProgress({ progress }) {
   const modules = [
     {
       id: 1,
@@ -80,18 +80,18 @@ function LearnerProgress({progress}) {
         },
       ],
     },
-  ]
+  ];
   return (
     <MuiBox display="flex" flexWrap="wrap" justifyContent="space-around" p={4}>
       {modules.map((module) => (
         <ModuleProgress key={module.id} module={module} progress={progress} />
       ))}
     </MuiBox>
-  )
+  );
 }
 
-function ModuleProgress({module, progress}) {
-  const styles = useStyles()
+function ModuleProgress({ module, progress }) {
+  const styles = useStyles();
   return (
     <MuiBox>
       <h3>{module.name}</h3>
@@ -99,18 +99,18 @@ function ModuleProgress({module, progress}) {
         {module.lessons.map((lesson) => {
           const lessonProgress = progress.find(
             (p) => p.moduleId === module.id && p.lessonId === lesson.id
-          )
+          );
           return (
             <LessonProgress
               key={lesson.id}
               lesson={lesson}
               progress={lessonProgress == null ? 0 : lessonProgress.progress}
             />
-          )
+          );
         })}
       </ul>
     </MuiBox>
-  )
+  );
 }
 
 const Progress = withStyles((theme) => ({
@@ -126,16 +126,16 @@ const Progress = withStyles((theme) => ({
     borderRadius: 6,
     backgroundColor: theme.palette.success.main,
   },
-}))(MuiLinearProgress)
+}))(MuiLinearProgress);
 
-function LessonProgress({lesson, progress}) {
-  const styles = useStyles()
+function LessonProgress({ lesson, progress }) {
+  const styles = useStyles();
   return (
     <li className={styles.lesson}>
       <div>{lesson.name}</div>
       <Progress variant="determinate" value={progress * 100} />
     </li>
-  )
+  );
 }
 
-export default LearnerProgress
+export default LearnerProgress;

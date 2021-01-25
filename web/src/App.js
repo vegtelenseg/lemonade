@@ -1,7 +1,8 @@
-import LearnersPage from './components/LearnersPage'
-import LearnerPage from './components/LearnerPage'
-import NotFoundPage from './components/NotFoundPage'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import React from 'react';
+import LearnersPage from './components/LearnersPage';
+import LearnerPage from './components/LearnerPage';
+import NotFoundPage from './components/NotFoundPage';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,7 +1,7 @@
-import pg from "pg";
+import pg from 'pg';
 
 export const pool = new pg.Pool({
-  user: "postgres",
-  password: "postgres",
-  database: "challenge",
+  user: 'postgres',
+  password: 'postgres',
+  database: 'challenge',
 });

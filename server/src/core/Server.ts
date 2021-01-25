@@ -1,8 +1,8 @@
-import express from "express";
+import express from 'express';
 
-import { InitializeMiddleWare } from "./InitializeMiddleware";
-import { InitializeRoutes } from "./InitializeRoutes";
-import ServerConfig from "../../config/ServerConfig.json";
+import { InitializeMiddleWare } from './InitializeMiddleware';
+import { InitializeRoutes } from './InitializeRoutes';
+import ServerConfig from '../../config/ServerConfig.json';
 
 export const server = () => {
   const app = express();
@@ -10,7 +10,7 @@ export const server = () => {
   // TODO: Add convict
   const { host, port } = ServerConfig;
 
-  const link = "http://" + host + ":" + port.toString();
+  const link = 'http://' + host + ':' + port.toString();
 
   InitializeMiddleWare.InitializeCommonMiddleware(app);
   InitializeRoutes.Initialize(app, link);

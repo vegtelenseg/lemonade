@@ -1,8 +1,8 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from 'express';
 
-import { AbstractRouteController } from "../AbstractRouteController";
-import { LearnerService } from "../../services/leaner/LearnerService";
-import { StatusConstants } from "../../constants/StatusConstants";
+import { AbstractRouteController } from '../AbstractRouteController';
+import { LearnerService } from '../../services/leaner/LearnerService';
+import { StatusConstants } from '../../constants/StatusConstants';
 
 export class LearnerProgressUpdateRouteController extends AbstractRouteController {
   constructor(_link: string) {
@@ -11,7 +11,11 @@ export class LearnerProgressUpdateRouteController extends AbstractRouteControlle
     this.InitializePut();
   }
 
-  public async runService(req: Request, res: Response): Promise<any> {
+  public async runService(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
     try {
       const { learnerId } = req.params;
       const { progress, lessonId } = req.body;
@@ -22,10 +26,7 @@ export class LearnerProgressUpdateRouteController extends AbstractRouteControlle
       );
       res.status(StatusConstants.code200).send(response);
     } catch (error) {
-      res.status(StatusConstants.code500).send({
-        errorCode: StatusConstants.code500,
-        errorDescription: StatusConstants.code500Message,
-      });
+      next(error);
     }
   }
 }

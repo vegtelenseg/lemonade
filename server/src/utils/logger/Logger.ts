@@ -1,6 +1,6 @@
-import winston from "winston";
+import winston from 'winston';
 
-import { options } from "../../../config/LoggerConfig.json";
+import { options } from '../../../config/LoggerConfig.json';
 
 export class Logger {
   private logger: winston.Logger;

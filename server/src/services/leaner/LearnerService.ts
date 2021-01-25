@@ -1,10 +1,31 @@
-import { pool as db } from "../../db";
-import { StatusConstants } from "../../constants/StatusConstants";
-import { Request, Response } from "express";
+import { pool as db } from '../../db';
+import { StatusConstants } from '../../constants/StatusConstants';
+import { Request, Response, NextFunction } from 'express';
 export class LearnerService {
-  public static async listLearners(req: Request, res: Response) {
+  public static async getLearnerById(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    const { learnerId } = req.params;
+    const { rows } = await db.query('SELECT * from learners where id = $1', [
+      learnerId,
+    ]);
+    const learner = rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      username: row.username,
+      lastSync: row.last_sync,
+    }));
+    return learner;
+  }
+  public static async getLearners(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
     try {
-      const { rows } = await db.query("SELECT * FROM learners");
+      const { rows } = await db.query('SELECT * FROM learners');
       const learners = rows.map((row) => ({
         id: row.id,
         name: row.name,
@@ -13,15 +34,17 @@ export class LearnerService {
       }));
       return learners;
     } catch (error) {
-      return {
-        errorCode: StatusConstants.code500,
-        errorDescription: StatusConstants.code500Message,
-      };
+      next(error);
     }
   }
 
-  public static async getLearnerProgress(learnerId: string, res: Response) {
+  public static async getLearnerProgress(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
     try {
+      const { learnerId } = req.params;
       const { rows } = await db.query(
         `SELECT
           learners.id AS learner_id,
@@ -47,10 +70,8 @@ export class LearnerService {
       }));
       return learners;
     } catch (error) {
-      return {
-        errorCode: StatusConstants.code500,
-        errorDescription: StatusConstants.code500Message,
-      };
+      res.status(500).send(error.message);
+      // next(error.message);
     }
   }
 

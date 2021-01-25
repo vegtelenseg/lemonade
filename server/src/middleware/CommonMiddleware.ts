@@ -1,8 +1,8 @@
-import { Express } from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
+import { Express } from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-import { Logger } from "../utils/logger/Logger";
+import { Logger } from '../utils/logger/Logger';
 
 export class CommonMiddleware {
   app: Express;

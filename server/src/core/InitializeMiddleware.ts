@@ -1,7 +1,7 @@
-import { Express } from "express";
+import { Express } from 'express';
 
-import { CommonMiddleware } from "../middleware/CommonMiddleware";
-import { ErrorHandlingMiddleware } from "../middleware/ErrorHandlingMiddleware";
+import { CommonMiddleware } from '../middleware/CommonMiddleware';
+import { ErrorHandlingMiddleware } from '../middleware/ErrorHandlingMiddleware';
 
 export class InitializeMiddleWare {
   public static InitializeCommonMiddleware(app: Express) {

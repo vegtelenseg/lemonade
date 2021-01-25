@@ -1,4 +1,4 @@
-import express from "express";
+import express from 'express';
 
 export abstract class AbstractRouteController {
   router = express.Router();
@@ -6,9 +6,11 @@ export abstract class AbstractRouteController {
 
   public async runService(
     req: express.Request,
-    resp: express.Response
+    resp: express.Response,
+    next: express.NextFunction
   ): Promise<any> {
-    resp.send("runService Method for " + this.path + "does not exist !");
+    resp.send('runService Method for ' + this.path + 'does not exist !');
+    next();
   }
 
   public async InitializeGet() {

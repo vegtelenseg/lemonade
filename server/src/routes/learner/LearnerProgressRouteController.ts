@@ -1,8 +1,8 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from 'express';
 
-import { AbstractRouteController } from "../AbstractRouteController";
-import { LearnerService } from "../../services/leaner/LearnerService";
-import { StatusConstants } from "../../constants/StatusConstants";
+import { AbstractRouteController } from '../AbstractRouteController';
+import { LearnerService } from '../../services/leaner/LearnerService';
+import { StatusConstants } from '../../constants/StatusConstants';
 
 export class LearnerProgressRouteController extends AbstractRouteController {
   constructor(_link: string) {
@@ -11,22 +11,17 @@ export class LearnerProgressRouteController extends AbstractRouteController {
     this.InitializeGet();
   }
 
-  public async runService(req: Request, res: Response): Promise<any> {
+  public async runService(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
     try {
-      // TODO: Get this from request headers or
-      // or somewhere else safer.
-      const { learnerId } = req.params;
-      const response = await LearnerService.getLearnerProgress(
-        learnerId,
-        // @ts-ignore
-        res
-      );
+      const response = await LearnerService.getLearnerProgress(req, res, next);
       res.status(StatusConstants.code200).send(response);
     } catch (error) {
-      res.status(StatusConstants.code500).send({
-        errorCode: StatusConstants.code500,
-        errorDescription: StatusConstants.code500Message,
-      });
+      console.log('ERR: ', error);
+      // next(error);
     }
   }
 }

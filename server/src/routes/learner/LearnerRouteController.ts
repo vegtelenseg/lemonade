@@ -4,11 +4,11 @@ import { AbstractRouteController } from '../AbstractRouteController';
 import { LearnerService } from '../../services/leaner/LearnerService';
 import { StatusConstants } from '../../constants/StatusConstants';
 
-export class LearnerDeleteRouteController extends AbstractRouteController {
+export class LearnerRouteController extends AbstractRouteController {
   constructor(_link: string) {
     super();
     this.path = `/learners/:learnerId`;
-    this.InitializeDelete();
+    this.InitializeGet();
   }
 
   public async runService(
@@ -17,11 +17,11 @@ export class LearnerDeleteRouteController extends AbstractRouteController {
     next: NextFunction
   ): Promise<any> {
     try {
-      const { learnerId } = req.params;
-      const response = await LearnerService.deleteLearner(learnerId, res);
-      res.status(StatusConstants.code204).send(response);
+      const response = await LearnerService.getLearnerById(req, res, next);
+      res.status(StatusConstants.code200).send(response);
     } catch (error) {
-      next(error);
+      console.log('ERR: ', error);
+      // next(error);
     }
   }
 }
