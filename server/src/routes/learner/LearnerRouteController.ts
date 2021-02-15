@@ -20,8 +20,7 @@ export class LearnerRouteController extends AbstractRouteController {
       const response = await LearnerService.getLearnerById(req, res, next);
       res.status(StatusConstants.code200).send(response);
     } catch (error) {
-      console.log('ERR: ', error);
-      // next(error);
+      next(error);
     }
   }
 }
